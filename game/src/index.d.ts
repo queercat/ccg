@@ -1,11 +1,13 @@
 type GameType = {
-  decks: Card[][];
-  hands: Card[][];
-  actionTokens: number[];
-  scores: number[];
-  problems: Card[][];
+  decks: BizzaroArray<Card[]>;
+  hands: BizzaroArray<Card[]>;
+  actionTokens: BizzaroArray<number>;
+  scores: BizzaroArray<number>;
+  problems: BizzaroArray<Card[]>;
 };
+
 type Color = "Pink" | "Yellow" | "White" | "Blue" | "Orange" | "Purple";
+type BizzaroArray<T> = { [key: string | number]: T };
 
 type Card = {
   owner: string;

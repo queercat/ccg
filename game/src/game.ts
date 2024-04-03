@@ -18,11 +18,26 @@ const mockDeck = (owner: string) => {
 
 export const CCG: Game<GameType> = {
   setup: () => ({
-    decks: [mockDeck("0"), mockDeck("1")],
-    hands: [[], []],
-    actionTokens: [0, 0],
-    scores: [0, 0],
-    problems: [[], []],
+    decks: {
+      "0": mockDeck("0"),
+      "1": mockDeck("1"),
+    },
+    hands: {
+      "0": [],
+      "1": [],
+    },
+    actionTokens: {
+      "0": 0,
+      "1": 0,
+    },
+    scores: {
+      "0": 0,
+      "1": 0,
+    },
+    problems: {
+      "0": [],
+      "1": [],
+    },
   }),
   phases: {
     beginPhase,
