@@ -7,6 +7,6 @@ export const mainPhase: PhaseConfig<GameType> = {
     order: TurnOrder.CONTINUE,
   },
   moves: {
-    mainPhaseDraw
-  }
-}
+    mainPhaseDraw,
+  },
+};
