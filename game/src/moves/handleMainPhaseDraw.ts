@@ -1,7 +1,7 @@
 import { Move } from "boardgame.io";
 import { INVALID_MOVE } from "boardgame.io/core";
 
-export const mainPhaseDraw: Move<GameType> = ({ G, playerID }) => {
+export const handleMainPhaseDraw: Move<GameType> = ({ G, playerID }) => {
   if (G.actionTokens[playerID] < 1) {
     return INVALID_MOVE;
   }

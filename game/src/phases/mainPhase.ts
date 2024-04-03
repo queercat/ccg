@@ -1,12 +1,12 @@
 import { PhaseConfig } from "boardgame.io";
 import { TurnOrder } from "boardgame.io/core";
-import { mainPhaseDraw } from "../moves/draw";
+import { handleMainPhaseDraw } from "../moves/handleMainPhaseDraw";
 
 export const mainPhase: PhaseConfig<GameType> = {
   turn: {
     order: TurnOrder.CONTINUE,
   },
   moves: {
-    mainPhaseDraw,
+    handleMainPhaseDraw,
   },
 };
