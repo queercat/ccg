@@ -1,13 +1,14 @@
+type Indexable = string | number;
+
 type GameType = {
-  decks: BizzaroArray<Card[]>;
-  hands: BizzaroArray<Card[]>;
-  actionTokens: BizzaroArray<number>;
-  scores: BizzaroArray<number>;
-  problems: BizzaroArray<Card[]>;
+  decks: Record<Indexable, Card[]>;
+  hands: Record<Indexable, Card[]>;
+  actionTokens: Record<Indexable, number>;
+  scores: Record<Indexable, number>;
+  problems: Record<Indexable, Problem[]>;
 };
 
 type Color = "Pink" | "Yellow" | "White" | "Blue" | "Orange" | "Purple";
-type BizzaroArray<T> = { [key: string | number]: T };
 
 type Card = {
   owner: string;
