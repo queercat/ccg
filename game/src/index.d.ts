@@ -1,11 +1,18 @@
 type Indexable = string | number;
+type Problem = Card extends { type: "Problem" } ? Card : never;
+
+type Zone = {
+  owner: string;
+  cards: Card[];
+  problem?: Problem;
+};
 
 type GameType = {
   decks: Record<Indexable, Card[]>;
   hands: Record<Indexable, Card[]>;
   actionTokens: Record<Indexable, number>;
   scores: Record<Indexable, number>;
-  problems: Record<Indexable, Problem[]>;
+  zones: Record<Indexable, Zone>;
 };
 
 type Color = "Pink" | "Yellow" | "White" | "Blue" | "Orange" | "Purple";

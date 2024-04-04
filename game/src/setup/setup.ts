@@ -14,31 +14,26 @@ const mockDeck = (owner: string) => {
   return [mockCard(owner), mockCard(owner), mockCard(owner)];
 };
 
-export const setupGame = (): GameType => {
+const mapRangeToLambda = <T>(
+  range: number,
+  lambda: (index: Indexable) => T
+) => {
+  const result: Record<Indexable, T> = {};
+
+  for (let i = 0; i < range; i++) {
+    result[i] = lambda(i);
+  }
+
+  return result;
+};
+
+export const setupGame = (numPlayers: number): GameType => {
   return {
-    decks: {
-      "0": mockDeck("0"),
-      "1": mockDeck("1"),
-    },
+    decks: mapRangeToLambda(numPlayers, (id) => mockDeck(id.toString())),
+    hands: mapRangeToLambda(numPlayers, (_) => []),
+    actionTokens: mapRangeToLambda(numPlayers, (_) => 0),
+    scores: mapRangeToLambda(numPlayers, (_) => 0),
 
-    hands: {
-      "0": [],
-      "1": [],
-    },
-
-    actionTokens: {
-      "0": 0,
-      "1": 0,
-    },
-
-    scores: {
-      "0": 0,
-      "1": 0,
-    },
-
-    problems: {
-      "0": [],
-      "1": [],
-    },
+    zones: {},
   };
 };

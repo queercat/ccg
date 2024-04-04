@@ -4,7 +4,7 @@ import { mainPhase } from "./phases/mainPhase";
 import { setupGame } from "./setup/setup";
 
 export const CCG: Game<GameType> = {
-  setup: setupGame,
+  setup: ({ ctx }) => setupGame(ctx.numPlayers),
   phases: {
     beginPhase,
     mainPhase,
