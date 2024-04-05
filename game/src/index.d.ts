@@ -1,10 +1,12 @@
 type Indexable = string | number;
 type Problem = Card extends { type: "Problem" } ? Card : never;
 
+type DefaultZone = "problems" | "homes";
+
 type Zone = {
   owner: string;
   cards: Card[];
-  problem?: Problem;
+  problem?: Problem; // Would be much nicer to have a Rust like enum here. Probably doable but TODO @Hithroc.
 };
 
 type GameType = {
@@ -12,7 +14,7 @@ type GameType = {
   hands: Record<Indexable, Card[]>;
   actionTokens: Record<Indexable, number>;
   scores: Record<Indexable, number>;
-  zones: Record<Indexable, Zone>;
+  zones: Record<DefaultZone, Record<Indexable, Zone>>;
 };
 
 type Color = "Pink" | "Yellow" | "White" | "Blue" | "Orange" | "Purple";
@@ -33,5 +35,10 @@ type Card = {
   traits: string[];
   cost: number;
   colors: Color[];
-  requirements: Option<Record<Color, number>>;
+  power: number;
+  guid: string;
+  requirements: {
+    color: Color[];
+    power: number;
+  };
 };

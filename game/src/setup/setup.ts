@@ -4,14 +4,26 @@ const mockCard = (owner: string): Card => {
     cost: Math.floor(Math.random() * 5),
     owner,
     traits: [],
-    requirements: null,
-    colors: ["Pink"],
+    requirements: {
+      color: ["Pink", "Yellow"],
+      power: 1,
+    },
+    colors: ["Pink", "Yellow"],
     type: "Friend",
+    power: 1,
+    guid: Math.random().toString(),
   };
 };
 
 const mockDeck = (owner: string) => {
   return [mockCard(owner), mockCard(owner), mockCard(owner)];
+};
+
+const createZone = (owner: string): Zone => {
+  return {
+    owner,
+    cards: [],
+  };
 };
 
 const mapRangeToLambda = <T>(
@@ -34,6 +46,9 @@ export const setupGame = (numPlayers: number): GameType => {
     actionTokens: mapRangeToLambda(numPlayers, (_) => 0),
     scores: mapRangeToLambda(numPlayers, (_) => 0),
 
-    zones: {},
+    zones: {
+      problems: mapRangeToLambda(numPlayers, (id) => createZone(id.toString())),
+      homes: mapRangeToLambda(numPlayers, (id) => createZone(id.toString())),
+    },
   };
 };
