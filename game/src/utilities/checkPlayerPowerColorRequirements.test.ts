@@ -50,3 +50,5 @@ describe(name, () => {
     expect(result).toBe(true);
   });
 });
+
+// todo: write more tests for checking specific color requirement pairs.
